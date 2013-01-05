@@ -1,0 +1,345 @@
+<!--
+====================================================================
+gsa_1.0.dtd - document type for GSA templates
+@version $Id: //product/DAS/version/9.1/Java/atg/dtds/gsa/gsa_1.0.dtd#2 $$Change: 534451 $
+====================================================================
+-->
+
+<!-- Flag datatype, and values -->
+<!ENTITY % flag "(true | false)">
+
+<!-- The whole template -->
+<!ELEMENT gsa-template (header?,
+     (item-descriptor | add-item | update-item | print-item | remove-item |
+     transaction | development-line | query-items | remove-all-items | export-items | import-items |
+     print-ddl | dump-caches | load-items)*)>
+
+<!-- The header -->
+<!ELEMENT header (name?, author*, version?, description?)>
+
+<!-- Name of template -->
+<!ELEMENT name (#PCDATA)>
+
+<!-- The author(s) -->
+<!ELEMENT author (#PCDATA)>
+
+<!-- Version string -->
+<!ELEMENT version (#PCDATA)>
+
+<!-- Description string -->
+<!ELEMENT description (#PCDATA)>
+
+
+<!-- cache-mode datatype and values -->
+<!ENTITY % cache-mode "(disabled | simple | locked | distributed | distributedJMS | distributedHybrid )">
+
+<!ENTITY % property-cache-mode "(disabled | inherit)">
+
+<!-- Item descriptors -->
+<!ELEMENT item-descriptor ((property | table | attribute | named-query)*,
+                           rql-filter?,
+                           (property | table | attribute | named-query)*)>
+
+<!ATTLIST item-descriptor
+        xml:id          ID      #IMPLIED
+        name		CDATA	#REQUIRED
+        display-name    CDATA   #IMPLIED
+        display-name-resource CDATA   #IMPLIED
+        default	 	%flag;	"false"
+        super-type      CDATA   #IMPLIED
+        sub-type-property CDATA #IMPLIED
+        sub-type-value  CDATA   #IMPLIED
+        copy-from      CDATA   #IMPLIED
+        content        %flag;  "false"
+        folder         %flag;  "false"
+        use-id-for-path %flag;  "false"
+        content-name-property CDATA #IMPLIED
+        content-path-property CDATA #IMPLIED
+        content-property CDATA #IMPLIED
+        content-length-property CDATA #IMPLIED
+        content-checksum-property CDATA #IMPLIED
+        folder-id-property CDATA #IMPLIED
+        last-modified-property CDATA #IMPLIED
+        display-property CDATA #IMPLIED
+        version-property CDATA #IMPLIED
+        hidden		%flag;	"false"
+        expert		%flag;	"false"
+        writable	%flag;	"true"
+        description	CDATA	#IMPLIED
+        description-resource	CDATA	#IMPLIED
+        cache-mode	%cache-mode;	"simple"
+        id-space-name   CDATA   #IMPLIED
+        id-space-names   CDATA   #IMPLIED
+        text-search-properties  CDATA   #IMPLIED
+        item-cache-size	CDATA   #IMPLIED
+        item-cache-timeout CDATA   #IMPLIED
+        item-expire-timeout CDATA   #IMPLIED
+        query-cache-size CDATA   #IMPLIED
+        query-expire-timeout CDATA   #IMPLIED
+        id-separator CDATA  ":"
+        versionable %flag;   #IMPLIED
+>
+
+<!-- Property tag - defines one property descriptor for an item descriptor -->
+<!ELEMENT property (derivation?, (option | attribute)*)>
+<!ATTLIST property
+        xml:id          ID      #IMPLIED
+      name		CDATA	#REQUIRED
+        column-name	CDATA	#IMPLIED
+        column-names	CDATA	#IMPLIED
+        property-type   CDATA   #IMPLIED
+        data-type       CDATA	#IMPLIED
+        data-types       CDATA	#IMPLIED
+        item-type       CDATA	#IMPLIED
+        sql-type        CDATA   #IMPLIED
+        sql-types       CDATA   #IMPLIED
+        component-item-type CDATA #IMPLIED
+        component-data-type CDATA #IMPLIED
+        display-name	CDATA	#IMPLIED
+        display-name-resource CDATA #IMPLIED
+        description	CDATA	#IMPLIED
+        description-resource	CDATA	#IMPLIED
+        required	%flag;	"false"
+        readable	%flag;	"true"
+        writable	%flag;	"true"
+        queryable	%flag;	"true"
+        default         CDATA  #IMPLIED
+        hidden		%flag;	"false"
+        expert		%flag;	"false"
+        editor-class    CDATA   #IMPLIED
+        category        CDATA   #IMPLIED
+        category-resource        CDATA   #IMPLIED
+        cascade         CDATA   #IMPLIED
+        repository      CDATA   #IMPLIED
+        cache-mode	%property-cache-mode;	"inherit"
+        group           CDATA   #IMPLIED
+>
+
+<!-- Derived properties have an associated derivation which
+     specifies how the dervied property values are derived -->
+<!ELEMENT derivation (expression*)>
+<!ATTLIST derivation
+          method              CDATA     #IMPLIED
+          user-method         CDATA     #IMPLIED
+          override-property   CDATA     #IMPLIED
+>
+
+<!-- A derived property expression, when evaluated
+     specifies a value used in deriving a derived
+     property value -->
+<!ELEMENT expression (#PCDATA)>
+
+<!-- Defines a table for an item descriptor -->
+<!ELEMENT table (property | attribute)*>
+<!ATTLIST table
+        xml:id          ID      #IMPLIED
+        name		CDATA	      #REQUIRED
+        multi-column-name   CDATA         #IMPLIED
+        type                (primary|auxiliary|multi)     "auxiliary"
+        id-column-name      CDATA          #IMPLIED
+        id-column-names     CDATA          #IMPLIED
+        shared-table-sequence   (1|2|3|4|5|6|7|8|9)     "1"
+>
+
+<!-- Options are possible values for enumerated attributes -->
+<!ELEMENT option EMPTY>
+<!ATTLIST option
+          xml:id          ID      #IMPLIED
+          value         CDATA           #IMPLIED
+          resource      CDATA           #IMPLIED
+          bean          CDATA           #IMPLIED
+          code          CDATA           #IMPLIED>
+
+<!-- The attribute tag is used to specify the list of feature descriptor values -->
+<!ELEMENT attribute EMPTY>
+<!ATTLIST attribute
+          xml:id          ID      #IMPLIED
+          name         CDATA           #REQUIRED
+          value        CDATA           #IMPLIED
+          bean         CDATA           #IMPLIED
+          data-type    CDATA           #IMPLIED>
+
+<!-- this tag specifies an RQL statement to be used as a filter
+     for an item descriptor
+  -->
+<!ELEMENT rql-filter (rql,param*)>
+
+<!-- RQL query string itself -->
+<!ELEMENT rql (#PCDATA)>
+
+<!-- RQL query parameters -->
+<!ELEMENT param EMPTY>
+<!ATTLIST param
+          name         CDATA           #IMPLIED
+          value        CDATA           #IMPLIED
+          bean         CDATA           #IMPLIED
+          data-type    CDATA           #IMPLIED>
+
+<!-- The named-query element. This specifies an association between a
+     user-defined name and a Query representation -->
+<!ELEMENT named-query (rql-query | sql-query)>
+
+<!-- The rql-query element. Identifies an association between a user-defined
+     name and an RQL query string, that can later be retrieved by name from
+     the corresponding repository view that this tag is found under -->
+<!ELEMENT rql-query (query-name, rql)>
+
+<!ELEMENT sql-query (query-name,
+                     sql,
+         returns?,
+         input-parameter-types?,
+         dependencies?)>
+<!ELEMENT sql (#PCDATA)>
+<!ATTLIST sql
+         stored-procedure %flag; #IMPLIED
+>
+<!ELEMENT returns (#PCDATA)>
+<!ELEMENT input-parameter-types (#PCDATA)>
+<!ELEMENT dependencies (#PCDATA)>
+
+<!-- The query-name element, which indicates the user-defined name of a named
+     query instance -->
+<!ELEMENT query-name (#PCDATA)>
+
+<!-- The transaction element.  It surround the operation elements
+     add-item, print-item etc.  Note that add-item tags in this element
+     are processed one at a time.  They cannot make forward references
+     to other items and no attempt is made to satisfy database integrity
+     constraints (beyond that automatically done with the cascade operator)
+     Use the import-items tag if you want to load in items with forward
+     references.  -->
+<!ELEMENT transaction (add-item | update-item | print-item | remove-item |
+                       transaction | query-items | remove-all-items |
+                       export-items | load-items | rollback-transaction)*>
+
+<!-- The development-line element. It surround the operation elements
+     add-item, print-item etc.  Note that add-item tags in this element
+     are processed one at a time.  They cannot make forward references
+     to other items and no attempt is made to satisfy database integrity
+     constraints (beyond that automatically done with the cascade operator)
+     Use the import-items tag if you want to load in items with forward
+     references.  -->
+<!ELEMENT development-line (add-item | update-item | print-item | remove-item |
+                       transaction | query-items | remove-all-items |
+                       export-items | load-items)*>
+<!ATTLIST development-line
+	 id		CDATA #REQUIRED
+>
+
+<!--
+  The import-items element.  This tag only contains add-item tags.  These
+  tags can contain forward references.  The tags are processed in three
+  passes - pass one creates all items.  Pass two, sets required properties
+  and optional properties which do not refer to other items.  Pass three
+  sets the remaining properties and updates the item -->
+<!ELEMENT import-items (add-item)*>
+
+<!-- Procedural tags for adding and modifying items -->
+<!ELEMENT add-item (set-property*)>
+<!ATTLIST add-item
+          item-descriptor CDATA         #REQUIRED
+          id              CDATA         #IMPLIED
+          tag             CDATA         #IMPLIED
+          on-commit       CDATA         #IMPLIED
+          skip-add        CDATA         #IMPLIED
+          repository      CDATA         #IMPLIED
+          no-checkin      %flag;        "false"
+>
+
+<!-- Procedural tags for adding and modifying items -->
+<!ELEMENT update-item (set-property*)>
+<!ATTLIST update-item
+          item-descriptor CDATA         #REQUIRED
+          id              CDATA         #IMPLIED
+          tag             CDATA         #IMPLIED
+          skip-update     CDATA         #IMPLIED
+>
+
+<!-- Procedural tag for removing an item -->
+<!ELEMENT remove-item EMPTY>
+<!ATTLIST remove-item
+          item-descriptor CDATA         #REQUIRED
+          id              CDATA         #IMPLIED
+          tag             CDATA         #IMPLIED
+          remove-references-to %flag;   "false"
+>
+
+<!--
+ Procedural tag for removing all items.  Only enabled if the system
+ property atg.allowRemoveAllItems is set on startup
+ -->
+<!ELEMENT remove-all-items EMPTY>
+<!ATTLIST remove-all-items
+          item-descriptor CDATA         #REQUIRED
+>
+
+<!-- Procedural tag for exporting the data required to recreate one or more
+     item-descriptors.  The item-descriptors attribute specifies a comma
+     separated list of one or more item descriptor names.  If none are
+     specified, all item-descriptors are exported -->
+<!ELEMENT export-items EMPTY>
+<!ATTLIST export-items
+          item-descriptors CDATA        #IMPLIED
+          skip-references  %flag;        "false"
+>
+
+<!-- Procedural tag for querying and printing an item -->
+<!ELEMENT query-items (#PCDATA)>
+<!ATTLIST query-items
+          item-descriptor CDATA         #REQUIRED
+          query           CDATA         #IMPLIED
+          print-content   CDATA         #IMPLIED
+          quiet           %flag;        "false"
+          id-only         %flag;        "false"
+>
+
+<!-- Procedural tag for caching a list of items -->
+<!ELEMENT load-items (#PCDATA)>
+<!ATTLIST load-items
+          item-descriptor CDATA         #REQUIRED
+          properties      CDATA         #IMPLIED
+          load-all-items  %flag;        "false"
+          quiet           %flag;        "false"
+>
+
+<!-- Procedural tag for printing an item -->
+<!ELEMENT print-item EMPTY>
+<!ATTLIST print-item
+          item-descriptor CDATA         #IMPLIED
+          path            CDATA         #IMPLIED
+          folder          CDATA         #IMPLIED
+          id              CDATA         #IMPLIED
+          tag             CDATA         #IMPLIED
+          print-content   CDATA         #IMPLIED
+>
+
+<!-- Sets a property value.  Used only in the add-item and update-item tags -->
+<!ELEMENT set-property (#PCDATA)>
+<!ATTLIST set-property
+          name          CDATA           #REQUIRED
+          value         CDATA           #IMPLIED
+    add	 	%flag;	        "false"
+    remove 	%flag;          "false"
+>
+
+<!-- Sets a property value.  Used only in the add-item and update-item tags -->
+<!ELEMENT rollback-transaction EMPTY>
+
+<!-- Procedural tag for printing the DDL needed -->
+<!ELEMENT print-ddl EMPTY>
+<!ATTLIST print-ddl
+          database-name CDATA           #IMPLIED
+>
+
+<!-- Procedural tag for dumping the caches of one or more
+     item-descriptors.  The item-descriptors attribute specifies a comma
+     separated list of one or more item descriptor names.  If none are
+     specified, all of the caches for the repository are dumped. The
+     dump-type attribute specifies if the output should be formatted as
+     a list of item ids or as XML that can be later used to pre-cache
+     the items -->
+<!ELEMENT dump-caches EMPTY>
+<!ATTLIST dump-caches
+          item-descriptors CDATA        #IMPLIED
+          dump-type (debug|queries|both)     "debug"
+>

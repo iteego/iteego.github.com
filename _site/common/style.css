@@ -1,0 +1,106 @@
+/* CSS Document */
+
+* {
+	margin:0; padding:0;
+	font-size:100%;
+}
+
+body{
+	background:#040607 url(../images/bg1.gif) repeat-x;
+	text-align:center;
+}
+
+img {vertical-align:top;}
+a img { border:0;}
+
+ul { list-style:none;}
+
+.left { float:left;}
+.right {float:right;}
+.clear  { clear:both;}
+
+
+html, input, textarea
+	{
+		/* force right scrollbar */
+		height: 100%;
+		margin-bottom: 1px;
+		/* */
+		font-family:Tahoma, Geneva, sans-serif;
+		font-size:0.75em;
+		line-height:1.5em;
+/*		font-size:0.688em;
+		line-height:1.182em;
+		color: #8e8e8e;
+		*/
+        color: #b6b6b6;
+  }
+
+input, select { vertical-align:middle; font-weight:normal;}
+
+a {color:#fff;}
+a:hover{text-decoration:none;}
+p {padding-top:15px;}
+
+/* ============================= main layout ====================== */
+
+.imgindent {margin:0 20px 0 0; float:left;}
+
+h2 {color:#f7f7f7; border-bottom:2px solid #272d33; background:url(../images/title-bg.gif) no-repeat 0 5px; font-size:1.545em; line-height:1em; padding:0 0 15px 18px; text-transform:uppercase; margin-bottom:17px; font-weight:normal;}
+h3 {color:#f7f7f7;}
+
+.link {color:#f67a00; text-transform:uppercase; font-size:0.909em; line-height:1em; display:inline-block; margin-top:20px; font-weight:bold; text-decoration:none;}
+.link:hover {color:#fff;}
+
+#content li {background:url(../images/link-bg.gif) no-repeat 0 3px; padding-left:15px; padding-bottom:13px;}
+#content li a {text-transform:uppercase; text-decoration:none; color:#fff; display:block;}
+#content li a:hover {color:#f67a00;}
+
+cite {font-style:normal;}
+
+/* ============================= header ====================== */
+
+.row1 {color:#7c7c7c; text-transform:uppercase; padding:10px 20px 10px 11px;}
+.row1 a {color:#7c7c7c; text-decoration:none;}
+.row1 a:hover {text-decoration:underline;}
+
+.logo {margin-bottom:106px;}
+.menu {background:url(../images/menu-tail.png) top left repeat-x; padding:14px 0 15px 18px;}
+.menu li {display:inline; border-right:1px solid #494d53; padding-right:18px; margin-right:15px; text-transform:uppercase; font-weight:bold;}
+.menu li a {color:#fff; text-decoration:none;}
+.menu li a:hover, .menu .active a {color:#f67a00;}
+.menu li a:hover, .menu .last-active a {color:#f67a00;}
+.menu .last {border:none;}
+.menu .last-active {border:none; }
+
+.block {padding:29px 0 0 0;}
+.slogan-white {margin:89px 0 0 609px; position:absolute; font-size:1.6em; color:#FFFFFF; }
+.slogan-black {margin:89px 0 0 609px; position:absolute; font-size:1.6em; color:#000000; }
+
+/* ============================= content ====================== */
+
+.col-pad {padding-right:36px;}
+
+.text2 {text-transform:uppercase; color:#fff;}
+.text3 {color:#fff;}
+.rss {float:right; margin-top:4px;}
+
+.margin1 {margin-top:28px;}
+.margin2 {margin-top:18px;}
+.phone {display:inline-block; width:92px; vertical-align:middle;}
+
+/* ============================= footer ====================== */
+
+#footer {font-size:0.909em; color:#343536; text-transform:uppercase;}
+#footer a {color:#828383; text-decoration:none;}
+#footer a:hover {text-decoration:underline;}
+
+/* ============================= forms ============================= */
+
+
+#ContactForm .rowi {height:40px;}
+#ContactForm .key {display:inline-block; width:112px; vertical-align:top;}
+#ContactForm a {float:right; margin:20px 0 0 20px;}
+
+.input {width:167px; height:15px; border:1px solid #7d7d7d; background:#fff; padding:0 0 0 5px; font-size:1em;}
+textarea {width:167px; height:91px; border:1px solid #7d7d7d; background:#fff; padding:0 0 0 5px; overflow:auto; font-size:1em;}
