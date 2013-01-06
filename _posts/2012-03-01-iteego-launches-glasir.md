@@ -1,6 +1,7 @@
 ---
 title: Iteego Launches GLASIR
 link: http://www.glasir.com
+time: 18:00 PST
 ---
 Iteego formally launched the Glasir Productivity Platform,
 allowing Oracle Commerce projects to go from zero to working

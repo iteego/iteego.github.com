@@ -9,8 +9,14 @@ layout: default
 				{{ column1 | markdownify }}
 			</div>
 			<div class="col-2 col-pad">
-				{% capture column2 %}{% include home-column-2.md %}{% endcapture %}
-				{{ column2 | markdownify }}
+				<h2>latest news</h2>
+				<ul>
+					{% for post in site.posts %}
+						<li><a href="{{ post.link }}">{{ post.title }}</a>
+						<p>{{ post.date | date: '%Y-%m-%d' }} {{ post.time }}</p>
+						{{ post.content }}
+					{% endfor %}
+				</ul>
 			</div>
 			<div class="col-3">
 				<h2>services and solutions</h2>
