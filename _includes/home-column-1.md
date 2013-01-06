@@ -34,5 +34,3 @@ need and has developed the first true producitivty platform to address it. You w
 The Iteego team consists of Oracle Commerce Professionals, Web Designers, Project Managers,
 experts in JAVA and J2EE software development, legacy system integration, custom
 application development and operational management.
-
-[read more about us](about)
