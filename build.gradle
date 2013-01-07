@@ -17,26 +17,20 @@ task publish << {
   def s3Client = new AmazonS3Client(s3Credentials, new ClientConfiguration().withProtocol(Protocol.HTTPS))
 	File releasesDir = new File('_site')
 
-  def buckets = awsS3Bucket.tokenize(",")
-  buckets.each { bucket ->
+  awsS3Bucket.tokenize(",").each { bucket ->
 
-		println ">   S3 bucket: $bucket"
+		println "\n\n>   S3 bucket: $bucket"
+		int fileCount = 0
 		releasesDir.eachFileRecurse { f ->
 			if (f.isDirectory()) return
 
 			String key = (f.canonicalPath - releasesDir.canonicalPath).substring(1)
 
-			println ">   S3 upload: $key"
 			s3Client.putObject bucket, key, f
 			s3Client.setObjectAcl bucket, key, CannedAccessControlList.PublicRead
+			fileCount++
 		}
-  }
-}
-
-task arrayTest << {
-  def buckets = awsS3Bucket.tokenize(",")
-  buckets.each { bucket ->
-    println bucket
+		println ">   Uploaded $fileCount files to S3 $bucket"
   }
 }
 
