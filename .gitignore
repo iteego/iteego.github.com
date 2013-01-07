@@ -1,3 +1,4 @@
 _site
 *.swp
 gradle.properties
+.gradle
