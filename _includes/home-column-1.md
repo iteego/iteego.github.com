@@ -10,6 +10,8 @@ The way we look at enterprise software today is radically different from how we 
 
 **These are exciting times!**
 
+HOLLA!
+
 On the same token, with additional functionality comes higher cost.  More advanced software also brings a new challenge to the table - finding domain knowledge to lead the implementation of your business systems.
 
 As an unexpected result, companies find that although they have invested record amounts in new platforms, they spend even more on implementation - both in project time lines and domain knowledge acquisition. After all is said and done, you are left wondering:
