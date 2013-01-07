@@ -20,7 +20,7 @@ task publish << {
   String[] buckets = awsS3Bucket.split(",")
   buckets.each { bucket ->
 
-		println ">   S3 nucket: $bucket"
+		println ">   S3 bucket: $bucket"
 		releasesDir.eachFileRecurse { f ->
 			if (f.isDirectory()) return
 
