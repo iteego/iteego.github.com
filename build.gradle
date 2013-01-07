@@ -15,11 +15,12 @@ buildscript {
 task publish << {
   def s3Credentials = new BasicAWSCredentials(awsKey, awsSecret)
   def s3Client = new AmazonS3Client(s3Credentials, new ClientConfiguration().withProtocol(Protocol.HTTPS))
+	File releasesDir = new File('_site')
 
-  String[] buckets = awsS3Buckets.split(",")
+  String[] buckets = awsS3Bucket.split(",")
   buckets.each { bucket ->
-		File releasesDir = new File('_site')
 
+		println ">   S3 nucket: $bucket"
 		releasesDir.eachFileRecurse { f ->
 			if (f.isDirectory()) return
 
