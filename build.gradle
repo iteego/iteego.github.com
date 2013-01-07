@@ -34,7 +34,7 @@ task publish << {
 }
 
 task arrayTest << {
-  def buckets = testParam.tokenize(",")
+  def buckets = awsS3Bucket.tokenize(",")
   buckets.each { bucket ->
     println bucket
   }
