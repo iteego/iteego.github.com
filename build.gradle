@@ -17,7 +17,7 @@ task publish << {
   def s3Client = new AmazonS3Client(s3Credentials, new ClientConfiguration().withProtocol(Protocol.HTTPS))
 	File releasesDir = new File('_site')
 
-  String[] buckets = awsS3Bucket.split(":")
+  def buckets = awsS3Bucket.tokenize(":")
   buckets.each { bucket ->
 
 		println ">   S3 bucket: $bucket"
