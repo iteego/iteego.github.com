@@ -16,7 +16,8 @@ task publish << {
   def s3Credentials = new BasicAWSCredentials(awsKey, awsSecret)
   def s3Client = new AmazonS3Client(s3Credentials, new ClientConfiguration().withProtocol(Protocol.HTTPS))
 
-  awsS3Buckets.each { bucket ->
+  String[] buckets = awsS3Buckets.split(",")
+  buckets.each { bucket ->
 		File releasesDir = new File('_site')
 
 		releasesDir.eachFileRecurse { f ->
