@@ -16,16 +16,18 @@ task publish << {
   def s3Credentials = new BasicAWSCredentials(awsKey, awsSecret)
   def s3Client = new AmazonS3Client(s3Credentials, new ClientConfiguration().withProtocol(Protocol.HTTPS))
 
-  File releasesDir = new File('_site')
+  awsS3Buckets.each { bucket ->
+		File releasesDir = new File('_site')
 
-  releasesDir.eachFileRecurse { f ->
-		if (f.isDirectory()) return
+		releasesDir.eachFileRecurse { f ->
+			if (f.isDirectory()) return
 
-    String key = (f.canonicalPath - releasesDir.canonicalPath).substring(1)
+			String key = (f.canonicalPath - releasesDir.canonicalPath).substring(1)
 
-		println ">   S3 upload: $key"
-    s3Client.putObject awsS3Bucket, key, f
-    s3Client.setObjectAcl awsS3Bucket, key, CannedAccessControlList.PublicRead
+			println ">   S3 upload: $key"
+			s3Client.putObject bucket, key, f
+			s3Client.setObjectAcl bucket, key, CannedAccessControlList.PublicRead
+		}
   }
 }
 
