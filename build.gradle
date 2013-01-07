@@ -17,7 +17,7 @@ task publish << {
   def s3Client = new AmazonS3Client(s3Credentials, new ClientConfiguration().withProtocol(Protocol.HTTPS))
 	File releasesDir = new File('_site')
 
-  def buckets = awsS3Bucket.tokenize(":")
+  def buckets = awsS3Bucket.tokenize(",")
   buckets.each { bucket ->
 
 		println ">   S3 bucket: $bucket"
@@ -30,6 +30,13 @@ task publish << {
 			s3Client.putObject bucket, key, f
 			s3Client.setObjectAcl bucket, key, CannedAccessControlList.PublicRead
 		}
+  }
+}
+
+task arrayTest << {
+  def buckets = testParam.tokenize(",")
+  buckets.each { bucket ->
+    println bucket
   }
 }
 
