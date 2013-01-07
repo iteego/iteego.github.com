@@ -1,0 +1,34 @@
+import com.amazonaws.*
+import com.amazonaws.auth.*
+import com.amazonaws.services.s3.*
+import com.amazonaws.services.s3.model.*
+
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath 'com.amazonaws:aws-java-sdk:1.3.9'
+  }
+}
+
+task publish << {
+  def s3Credentials = new BasicAWSCredentials(awsKey, awsSecret)
+  def s3Client = new AmazonS3Client(s3Credentials, new ClientConfiguration().withProtocol(Protocol.HTTPS))
+
+  File releasesDir = new File('_site')
+
+  releasesDir.eachFileRecurse { f ->
+		if (f.isDirectory()) return
+
+    String key = (f.canonicalPath - releasesDir.canonicalPath).substring(1)
+
+		println ">   S3 upload: $key"
+    s3Client.putObject awsS3Bucket, key, f
+    s3Client.setObjectAcl awsS3Bucket, key, CannedAccessControlList.PublicRead
+  }
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '1.2'
+}
