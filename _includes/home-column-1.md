@@ -17,6 +17,6 @@ As a result, companies find that although they have invested record amounts in n
 * "what happened to minimizing our cost?"
 * "what about the 9-month ROI I was promised?"
 
-The answer to this issue is hidden in the methods used. In order to achieve true productivity, it is imperative that modern methods be used. Iteego recognizes this need and has developed the first true producitivty platform to address it. You will find details under the products section.
+The answer to this issue is hidden in the methods used. In order to achieve true productivity, it is imperative that modern methods be used. Iteego recognizes this need and has developed the first true productivty platform to address it. You will find details under the products section.
 
 The Iteego team consists of Oracle Commerce Professionals, Web Designers, Project Managers, experts in JAVA and J2EE software development, legacy system integration, custom application development and operational management.
