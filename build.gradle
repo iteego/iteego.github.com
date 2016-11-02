@@ -8,7 +8,7 @@ buildscript {
     mavenCentral()
   }
   dependencies {
-    classpath 'com.amazonaws:aws-java-sdk:1.3.9'
+    classpath 'com.amazonaws:aws-java-sdk-s3:1.11.50'
   }
 }
 
@@ -19,6 +19,10 @@ task publish << {
   if (!releasesDir.isDirectory()) throw new GradleException("Release directory ${releasesDir} not valid!")
 
   def filesToInclude = 'html|css|js|jpg|gif|ttf|eot|woff|svg|png'.tokenize('|')
+
+  println ""
+  println "Legend: == not changed | >> changed, uploading | !! on s3, not on local, removing"
+  println ""
 
   awsS3Bucket.tokenize(",").each { bucket ->
     // existingFiles : List<S3ObjectSummary>
@@ -31,6 +35,8 @@ task publish << {
 
     println "> S3 bucket: $bucket"
     int fileCount = 0
+    int removeCount = 0
+    int skipCount = 0
     releasesDir.eachFileRecurse { f ->
       def ext = f.name.tokenize('.').last()
 
@@ -39,23 +45,26 @@ task publish << {
 
       String key = (f.canonicalPath - releasesDir.canonicalPath).substring(1)
       if (existingByKey[key]?.eTag == md5(f)) {
-        println ">   S3 upload: $key > not changed, skipping"
+        println ">   S3 == $key"
         existingByKey.remove(key)
+        skipCount++
         return
       }
 
       s3Client.putObject bucket, key, f
       s3Client.setObjectAcl bucket, key, CannedAccessControlList.PublicRead
-      println ">   S3 upload: $key > uploaded to S3"
+      println ">   S3 >> $key"
       fileCount++
       existingByKey.remove(key)
     }
 
+
     existingByKey.each { key, summary -> 
       s3Client.deleteObject bucket, key
-      println ">   S3 upload: $key > removed from S3"
+      println ">   S3 !! $key"
+      removeCount++
     }
-    println ">   Uploaded $fileCount files to $bucket"
+    println "> $bucket - uploaded $fileCount, removed $removeCount, skipped $skipCount"
   }
 }
 
@@ -71,5 +80,6 @@ String md5(File f) {
 
 
 task wrapper(type: Wrapper) {
-  gradleVersion = '1.2'
+  gradleVersion = '3.1'
+  jarFile = "config/gradle-wrapper/gradle-wrapper.jar"
 }
