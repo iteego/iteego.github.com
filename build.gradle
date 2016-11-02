@@ -15,24 +15,60 @@ buildscript {
 task publish << {
   def s3Credentials = new BasicAWSCredentials(awsKey, awsSecret)
   def s3Client = new AmazonS3Client(s3Credentials, new ClientConfiguration().withProtocol(Protocol.HTTPS))
-	File releasesDir = new File('_site')
+  File releasesDir = new File('_site')
+  if (!releasesDir.isDirectory()) throw new GradleException("Release directory ${releasesDir} not valid!")
+
+  def filesToInclude = 'html|css|js|jpg|gif|ttf|eot|woff|svg|png'.tokenize('|')
 
   awsS3Bucket.tokenize(",").each { bucket ->
+    // existingFiles : List<S3ObjectSummary>
+    def existingByKey = s3Client.listObjects(bucket).objectSummaries.findAll { 
+      // only files, not directories
+      !it.key.endsWith('/') 
+    }.collectEntries { 
+      [it.key, it] 
+    }
 
-		println ">   S3 bucket: $bucket"
-		int fileCount = 0
-		releasesDir.eachFileRecurse { f ->
-			if (f.isDirectory()) return
+    println "> S3 bucket: $bucket"
+    int fileCount = 0
+    releasesDir.eachFileRecurse { f ->
+      def ext = f.name.tokenize('.').last()
 
-			String key = (f.canonicalPath - releasesDir.canonicalPath).substring(1)
+      if (f.isDirectory()) return
+      if (!filesToInclude.any { it == ext }) return
 
-			s3Client.putObject bucket, key, f
-			s3Client.setObjectAcl bucket, key, CannedAccessControlList.PublicRead
-			fileCount++
-		}
-		println ">   Uploaded $fileCount files to $bucket"
+      String key = (f.canonicalPath - releasesDir.canonicalPath).substring(1)
+      if (existingByKey[key]?.eTag == md5(f)) {
+        println ">   S3 upload: $key > not changed, skipping"
+        existingByKey.remove(key)
+        return
+      }
+
+      s3Client.putObject bucket, key, f
+      s3Client.setObjectAcl bucket, key, CannedAccessControlList.PublicRead
+      println ">   S3 upload: $key > uploaded to S3"
+      fileCount++
+      existingByKey.remove(key)
+    }
+
+    existingByKey.each { key, summary -> 
+      s3Client.deleteObject bucket, key
+      println ">   S3 upload: $key > removed from S3"
+    }
+    println ">   Uploaded $fileCount files to $bucket"
   }
 }
+
+String md5(File f) {
+  def messageDigest = java.security.MessageDigest.getInstance("MD5")
+
+  f.eachByte(10240) { byte[] buf, int bytesRead ->
+    messageDigest.update(buf, 0, bytesRead);
+  }
+
+  new BigInteger(1, messageDigest.digest()).toString(16).padLeft(32, '0' )
+}
+
 
 task wrapper(type: Wrapper) {
   gradleVersion = '1.2'
