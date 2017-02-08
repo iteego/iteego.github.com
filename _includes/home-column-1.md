@@ -8,7 +8,7 @@ We pride ourselves in being a leading provider of continuous delivery in large-s
 
 The way we look at enterprise software today is radically different from how we saw things five years ago. There is a higher level of maturity in software platforms, which enables companies to leverage a larger amount of functionality in shorter implementation cycles.
 
-**These are exciting times!**
+**And these are exciting times!**
 
 On the same token, with additional functionality comes higher cost.  More advanced software also brings a new challenge to the table - finding domain knowledge to lead the implementation of your business systems.
 
