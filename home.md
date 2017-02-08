@@ -2,7 +2,7 @@
 layout: default
 ---
 
-### welcome mothafooka
+### welcome
 
 some token change.
 
