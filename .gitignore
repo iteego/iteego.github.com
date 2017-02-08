@@ -5,3 +5,4 @@ gradle.properties
 .jekyll-metadata
 *~
 
+.nginx_local_site.conf
