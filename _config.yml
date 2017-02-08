@@ -1,1 +1,2 @@
-exclude: ["gradle", "gradlew", "gradle.properties"]
+exclude: ["includes", "gradle", "gradlew", "gradle.properties", "*.sh"]
+includes_dir: includes
