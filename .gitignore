@@ -3,3 +3,5 @@ _site
 gradle.properties
 .gradle
 .jekyll-metadata
+*~
+
