@@ -35,44 +35,13 @@
 		<div id="content">
 			<div class="container line1">
 				<div class="col-1 col-pad">
-					<h2>Iteego Products</h2>
-					<div class="container">
-            <span class="text2">A New Realm of Possibility</span>
-            <p>
-              As part of a commitment to act as a source for transformational value
-              Iteego has developed a productivity framework that truly unleashes
-              the power of the Oracle Commerce platform.
-            </p>
-            <p>
-              With the new Glasir platform, it is possible to implement E-Commerce
-              web sites in record time, at a fraction of the cost and with 
-              unparalleled levels of stability, quality and reliability.
-            </p>
-					</div>
+				{% capture column1 %}{% include products-column-1.md %}{% endcapture %}
+	            {{ column1 | markdownify}}	
 				</div>
 				<div class="col-2">
-          <h2>Glasir - A Productivity Platform</h2>
-          <span class="text2">Enterprise - Meet Productivity</span>
-          <p>
-            Glasir is a software development productivity platform that defies conventional wisdom
-          </p>
-          <p>
-            Despite traditional belief, it is perfectly possible to have true productivity in
-            large-scale e-commerce projects.
-          </p>
-          <p>
-            The trick lies in the method and platform used.
-          </p>
-          <p>
-            Glasir provides the right platform and a natural guide to the right method.
-          </p>
-          <p>
-            The result is the potential for massive cost savings, in time as well as in money.
-            With Glasir, teams are able to achieve unparalleled productivity in enterprise E-Commerce.
-          </p>
-					<a href="glasir" class="link">DETAILED INFORMATION ABOUT GLASIR</a>
-          <br/>
-          <br/>
+                {% capture column2 %}{% include products-column-2.md %}{% endcapture %}
+	            {{ column2 | markdownify}}
+	            <a href="glasir" class="link">DETAILED INFORMATION ABOUT GLASIR</a>
 				</div>
 			</div>
 			<div>

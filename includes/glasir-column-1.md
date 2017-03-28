@@ -1,51 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-	<title>Iteego&#0153; | Oracle Commerce Experts (ATG) | Consulting and Software Development Services</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="description" content="Oracle ATG and E-Commerce experts, Consulting and software development"/>
-	<meta name="keywords" content="oracle,commerce,atg,software,development,expert,consultant,consulting,solution,java,j2ee,e-commerce,ecommerce"/>
-	<link href="../../common/style.css" rel="stylesheet" type="text/css" />
-	<link href="../../common/layout.css" rel="stylesheet" type="text/css" />
-</head>
-<body id="page-glasir">
-	<div id="main">
-		<!--header -->
-		<div id="header">
-			<div class="row1">
-			</div>
-			<div class="block">
-				<div class="slogan-white">
-					<!---->
-				</div>
-				<a href="../.."><img alt="" src="../../images/logo.jpg" class="logo" /></a><br />
-				<div class="menu">
-					<ul>
-						<li><a href="../..">HOME</a></li>
-						<li><a href="../../about">about</a></li>
-						<li class="active"><a href="..">products</a></li>
-						<li><a href="../../solutions">solutions</a></li>
-						<li><a href="../../careers">careers</a></li>
-						<li class="last"><a href="../../contact">contact</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<!--header end-->
-		<div id="content">
-			<div class="line3">
-			<div class="container line3">
-				<div class="col-1 col-pad">
-<h2>The Glasir Productivity Platform&#0153;</h2>
-<a href="..">back to products</a>
-<p>
+## The Glasir Productivity Platform™
+
+[back to products](..)
+
 The intention of Glasir is to provide the missing link to a full and
 end-to-end development platfrom powered by Oracle ATG. The Glasir
 platform complements ATG and promotes agility, visibilty and strong
 functional contracts, allowing for rapid, predictable deployments,
 proof-of-concept projects, product demonstrations and extensions.
-</p>
-<p>
+
 Oracle Commerce (formely known as ATG), one of the most powerful e-commerce
 frameworks in the world (if not the most powerful) intentionally leaves the
 last step of implementation platform open to the end user. Many ATG customers,
@@ -54,28 +16,22 @@ the final product is to be built. In our past 12 years we have collected
 the most effective components to implementing ATG in the real world and
 built a platform, called Glasir, that empowers the end user without
 impeding the power of the Oracle ATG product.
-</p>
-<p>
-<ul>
-<li><a name="">FASTER TIME TO MARKET</a>
+
+* [FASTER TIME TO MARKET](#)
 Glasir brings working software from day one, continuous delivery and a groundbreaking
 approach to productive software development.
-</li>
-<li><a name="">LEANER DEVELOPMENT TEAM</a>
+* [LEANER DEVELOPMENT TEAM](#)
 Glasir allows each member of the development team to be more self-sufficient. 
 There is no longer any hard requirements to have a dedicated on-call DBA, or
 dedicated on-call build master in order to remain productive.
-</li>
-<li><a name="">LEANER PRODUCTION SUPPORT</a>
+* [LEANER PRODUCTION SUPPORT](#)
 With higher levels of automation, you no longer need a large organization to
 support your application.
-</li>
-<li><a name="">TIGHER CONNECTION BETWEEN BUSINESS AND TECHNOLOGY</a>
+* [TIGHER CONNECTION BETWEEN BUSINESS AND TECHNOLOGY](#)
 Glasir implements executable functional contracts, allowing functional business
 requirements to be continually validated against the code base throughout
 development.
-</li>
-<li><a name="">THE HOLY GRAIL OF VERSIONING</a>
+* [THE HOLY GRAIL OF VERSIONING](#)
 Glasir unifies code, configuration, data model and test data into one
 revision line in source control. Allowing canonical versioning of the
 application - there is no more ambiguity around what is being tested.
@@ -90,15 +46,13 @@ state to be represented by one unique version in source control, which in
 turn allows for a high level of certainty in version management without
 the need for a large support organization (read: it saves money, time and
 brings higher level of accuracy).
-</li>
-<li><a name="">IN-MEMORY DATABASE</a>
+* [IN-MEMORY DATABASE](#)
 Glasir works with all databases supported by ATG and adds support for the
 H2 in-memory database, allowing the application to run in an independent,
 headless mode. This allows for automated functional testing to be a
 natural part of Continuous Delivery and it allows for developers to run
 the full ATG application without having to install a separate database.
-</li>
-<li><a name="">UP AND RUNNING IN RECORD TIME</a>
+* [UP AND RUNNING IN RECORD TIME](#)
 When a member of the devleopment team works with Glasir, the application
 starts up with one command. This includes database, data, configuration
 and code. The entire process takes minutes. This allows anyone, including
@@ -107,8 +61,7 @@ to work with a full application context. Another productivity perk: when
 running Glasir on a mac or on linux, developers can edit the application
 codebase and see the changes real-time, without having to restart the
 application.
-</li>
-<li><a name="">STRONG FUNCTIONAL CONTRACTS</a>
+* [STRONG FUNCTIONAL CONTRACTS](#)
 Functional specifications are written in plain English, possibly by
 business analysts together with the end client, then quickly extended
 into simple functional tests. This allows for project leadership to
@@ -119,8 +72,7 @@ the code base is released for testing. The concept of executable
 functional contracts allows for a more useful scope discussion prior to
 implementation, opening up possibility for more accurate project
 estimates.
-</li>
-<li><a name="">NO NEED TO INSTALL ANYTHING</a>
+* [NO NEED TO INSTALL ANYTHING](#)
 Glasir can be configured to automatically download and install everything
 for you, including ATG, the container (like JBOSS) and any other
 dependencies. Everything is closely managed with version tags. This means
@@ -131,53 +83,3 @@ repository and every team member will be automatically updated. This also
 means there is no longer any need to pass virtual machines around between
 team members - the entire application context is created from a
 lightweight source control repository.
-</li>
-</ul>
-</p>
-				</div>
-				<div class="col-2">
-					<h2>More Information</h2>
-					<div class="container margin2">
-						<a href="http://www.glasir.com" class="link" target="_blank">Glasir PRoduct Site</a>
-						<p>
-							For more in-depth information about the Glasir product platform
-							please follow the link to the <a href="http://www.glasir.com">Glasir site</a>
-						</p>
-						<br/>
-						<br/>
-						<br/>
-					</div>
-					<h2>Glasir Demo Videos</h2>
-					<div class="container margin2">
-						<a href="" class="link">Kick Start Your Project</a>
-						<p>
-              <iframe width="420" height="315" src="http://www.youtube.com/embed/7xzpd6EmFtY" frameborder="0" allowfullscreen></iframe>
-						</p>
-					</div>
-					<div class="container margin2">
-						<a href="" class="link">EXECUTABLE FUNCTIONAL CONTRACTS</a>
-						<p>
-              <iframe width="420" height="315" src="http://www.youtube.com/embed/rk7h4Xd-kGo" frameborder="0" allowfullscreen></iframe>
-						</p>
-					</div>
-			</div>
-		</div>
-		<!--footer begin-->
-		<div id="footer">
-			COPYRIGHT &copy; 2009 ITEEGO. ALL RIGHTS RESERVED.
-			 | <a href="/legal/terms-of-use">TERMS OF USE</a>
-			 | <a href="/legal/privacy-policy">PRIVACY POLICY</a>
-		</div>
-		<!--footer end-->
-	</div>
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-try {
-var pageTracker = _gat._getTracker("UA-8599511-1");
-pageTracker._trackPageview();
-} catch(err) {}</script>
-</body>
-</html>

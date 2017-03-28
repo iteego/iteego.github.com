@@ -36,24 +36,12 @@
 			<div class="line1">
 				<div class="container line2">
 					<div class="col-2 col-pad">
-            <h2>USA</h2>
-            Iteego INC<br/>
-            8605 Santa Monica Blvd Suite 32785<br/>
-            Los Angeles, CA 90069<br/>
-            U.S.A <br/>
-            +1.310.880.7098 (voice)<br/>
-            +1.310.496.0480 (fax)<br/>
-            usa "at" iteego.com (email)<br/>
-          </div>
-					<div class="col-2 col-pad">
-            <h2>Europe</h2>
-            Iteego AB<br/>
-            Kungsportsavenyen 3<br/>
-            411 36 Göteborg<br/>
-            Sweden<br/>
-            +46.31.360.8244 (voice)<br/>
-                                   <br />
-            sweden "at" iteego.com (email)<br/>
+                      {% capture column1 %}{% include contact-column-1.md %}{% endcapture %}
+	                  {{ column1 | markdownify}}
+                    </div>
+		    <div class="col-2 col-pad">
+                      {% capture column2 %}{% include contact-column-2.md %}{% endcapture %}
+	                  {{ column2 | markdownify}}
           </div>
 					<div class="col-3">
 					</div>

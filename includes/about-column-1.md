@@ -1,8 +1,5 @@
----
----
-
 ## Keeping an Eye on the Prize
-Iteego is an **independent system integrator** with focus on large-scale enterprise application implementation. Iteego's portfolio includes Best-of-Breed E-Commerce Systems, Enterprise Content Management Delivery Systems, Financial Applications and Custom Online Applications.
+Iteego is an independent system integrator with focus on large-scale enterprise application implementation. Iteego's portfolio includes Best-of-Breed E-Commerce Systems, Enterprise Content Management Delivery Systems, Financial Applications and Custom Online Applications.
 
 The company was founded in 2002. There are two Iteego offices in the USA and Europe. Headquarters are in Los Angeles, CA with additional offices in Gothenburg, Sweden.
 

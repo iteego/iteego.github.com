@@ -65,7 +65,32 @@
 		</div>
 		<!--header end-->
 		<div id="content">
-		  {{ content }}
+		  <div class="line1">
+	<div class="container line2">
+		<div class="col-1 col-pad">
+			{% capture column1 %}{% include home-column-1.md %}{% endcapture %}
+			{{ column1 | markdownify }}
+			<a href="about" class="link">read more about us</a>
+		</div>
+		<div class="col-2 col-pad">
+			<h2>latest news</h2>
+			<ul>
+				{% for post in site.posts %}
+					{% if post.categories contains 'news' %}
+						<li><a href="{{ post.link }}">{{ post.title }}</a>
+						<p>{{ post.date | date: '%Y-%m-%d' }} {{ post.time }}</p>
+						{{ post.content }}
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+		<div class="col-3">
+		   {% capture column3 %}{% include home-column-3.md %}{% endcapture %}
+		   {{ column3 | markdownify }}	
+		   <a href="solutions" class="link">MORE services and solutions</a>
+		</div>
+	</div>
+</div>
 		</div>
 		<!--footer begin-->
 		<div id="footer">

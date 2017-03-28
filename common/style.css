@@ -40,14 +40,14 @@ input, select { vertical-align:middle; font-weight:normal;}
 
 a {color:#fff;}
 a:hover{text-decoration:none;}
-p {padding-top:15px;}
+p {padding-top: 10px; padding-bottom:10px}
 
 /* ============================= main layout ====================== */
 
 .imgindent {margin:0 20px 0 0; float:left;}
 
 h2 {color:#f7f7f7; border-bottom:2px solid #272d33; background:url(../images/title-bg.gif) no-repeat 0 5px; font-size:1.545em; line-height:1em; padding:0 0 15px 18px; text-transform:uppercase; margin-bottom:17px; font-weight:normal;}
-h3 {color:#f7f7f7;}
+h3 {color:#f7f7f7; text-transform: uppercase;}
 
 .link {color:#f67a00; text-transform:uppercase; font-size:0.909em; line-height:1em; display:inline-block; margin-top:20px; font-weight:bold; text-decoration:none;}
 .link:hover {color:#fff;}

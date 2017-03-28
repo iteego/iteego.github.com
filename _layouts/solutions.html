@@ -8,7 +8,7 @@
 	<link href="../common/style.css" rel="stylesheet" type="text/css" />
 	<link href="../common/layout.css" rel="stylesheet" type="text/css" />
 </head>
-<body id="page-careers">
+<body id="page-solutions">
 	<div id="main">
 		<!--header -->
 		<div id="header">
@@ -16,63 +16,41 @@
 			</div>
 			<div class="block">
 				<div class="slogan-white">
+					<!-- -->
 				</div>
-				<a href=""><img alt="" src="../images/logo.jpg" class="logo" /></a><br />
+				<a href=".."><img alt="" src="../images/logo.jpg" class="logo" /></a><br />
 				<div class="menu">
 					<ul>
 						<li><a href="..">HOME</a></li>
 						<li><a href="../about">about</a></li>
 						<li><a href="../products">products</a></li>
-						<li><a href="../solutions">solutions</a></li>
-						<li class="active"><a href="">careers</a></li>
+						<li class="active"><a href="">solutions</a></li>
+						<li><a href="../careers">careers</a></li>
 						<li class="last"><a href="../contact">contact</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
-		<!--header end-->
+		<!--header end--> 
 		<div id="content">
-			<div class="container line1">
+			<div class="line1">
+			<div class="container line2">
 				<div class="col-1 col-pad">
-					<h2>Careers at Iteego</h2>
-					<div class="container">
-<p>
-Whether you are a technical guru, marketing wiz or seasoned consultant, when joining the Iteego
-team you will find one common theme: You are surrounded with some of the strongest and most dynamic
-individuals in the industry.
-</p>
-<p>
-We are always looking for talented individuals who wish to take part in the Iteego success story.
-Please feel free to browse our open positions by location to the left. We have positions available
-in the USA and in Sweden.
-</p>
-<p>
-You are always welcome to send your CV or resume to careers "at" iteego.com.
-</p>
-					</div>
+					{% capture column1 %}{% include solutions-column-1.md %}{% endcapture %}
+	                {{ column1 | markdownify}}	
+					<a href="atg-experts" class="link">read more</a>
 				</div>
-				<div class="col-2">
-<h2>Open Positions</h2>
-<span class="text2">Iteego is always looking for talented individuals</span>
-<p>
-Please submit your resume in pdf format to careers "at" iteego.com
-</p>
-<br/>
-<br/>
-<!--
-<h2>USA</h2>
-<ul>
-	<li><a href="#">Project Manager</a></li>
-	<li><a href="#">Consulting Architect</a></li>
-	<li><a href="positions/usa/senior-consulting-engineer.shtml">Senior Consulting Engineer</a></li>
-</ul>
-<br/>
-<h2>Sweden</h2>
-<ul>
-	<li><a href="#">Senior Software Engineer</a></li>
-</ul>
--->
+				<div class="col-2 col-pad">
+					{% capture column2 %}{% include solutions-column-2.md %}{% endcapture %}
+	                {{ column2 | markdownify}}	
+					<a href="consulting" class="link">read more</a>
 				</div>
+				<div class="col-3">
+					{% capture column3 %}{% include solutions-column-3.md %}{% endcapture %}
+	                {{ column3 | markdownify}}	
+					<a href="software-development" class="link">read more</a>
+				</div>
+			</div>
 			</div>
 		</div>
 		<!--footer begin-->

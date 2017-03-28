@@ -1,6 +1,3 @@
 ---
-layout: 3col
+layout: about
 ---
-
-
-
